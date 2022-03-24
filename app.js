@@ -2,6 +2,7 @@ const express = require('express')
 const app = express()
 const exhbs = require('express-handlebars')
 const port = 3000
+require('./config/mongoose')
 
 app.engine('.hbs', exhbs.engine({ extname: '.hbs' }))
 app.set('view engine', '.hbs')
