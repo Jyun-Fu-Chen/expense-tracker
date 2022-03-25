@@ -1,8 +1,8 @@
-<form>
+<form action="/records" method="POST">
   <div class="container w-50 p-3">
     <div class="input-group mt-5 mb-5">
       <label class="input-group-text" for="name">名稱：</label>
-      <input class="form-control" type="text" name="name" id="name">
+      <input class="form-control" type="text" name="name" id="name" required>
     </div>
 
     <div class="input-group mb-5">
@@ -17,11 +17,11 @@
     </div>
     <div class="input-group mb-5">
       <label class="input-group-text" for="date">日期：</label>
-      <input class="form-control" name="date" id="date" type="date">
+      <input class="form-control" name="date" id="date" type="date" required>
     </div>
     <div class="input-group mb-5">
-      <label class="input-group-text" for="">金額：</label>
-      <input class="form-control" type="number">
+      <label class="input-group-text" for="amount">金額：</label>
+      <input class="form-control" type="number" name="amount" id="amount" required>
     </div>
     <div class="d-grid gap-2 col-6 mx-auto">
       <button type="submit" class="btn btn-success mb-3 ">新增支出</button>
