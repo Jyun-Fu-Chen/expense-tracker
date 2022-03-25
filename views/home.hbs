@@ -1,7 +1,7 @@
 <div class="container mt-4">
   <div class="container mb-5">
     <select class="form-select" aria-label="Default select example" name="category" id="category">
-      <option selected>類別</option>
+      <option value="" selected>全部</option>
       <option value="家居物業">家居物業</option>
       <option value="交通出行">交通出行</option>
       <option value="休閒娛樂">休閒娛樂</option>
@@ -26,5 +26,8 @@
         {{!-- {{/each}} --}}
       </tbody>
     </table>
+    <div class="d-grid gap-2">
+      <a href="/records/new" class="btn btn-success">新增支出</a>
+    </div>
   </div>
 </div>
