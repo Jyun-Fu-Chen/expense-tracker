@@ -9,7 +9,11 @@ router.get('/', (req, res) => {
     .populate('categoryId')
     .lean()
     .then(records => {
-      return res.render('home',{records})
+      let totalAmount = 0
+      records.map(record => {
+        totalAmount += Number(record.amount)
+      })
+      return res.render('home', { records, totalAmount })
     })
 })
 
