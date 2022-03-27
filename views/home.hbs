@@ -1,6 +1,6 @@
 <div class="container mt-4">
   <div class="container mb-5">
-    <select class="form-select" aria-label="Default select example" name="category" id="category">
+    <select class="form-select" aria-label="Default select example" name="category" id="category" onchange='this.form.submit()'>
       <option value="" selected>全部</option>
       <option value="家居物業">家居物業</option>
       <option value="交通出行">交通出行</option>
@@ -15,15 +15,15 @@
         總金額:<h1 class="text-center">0000</h1>
       </thead>
       <tbody>
-        {{!-- {{#each }} --}}
+        {{#each records}}
         <tr>
-          <td class="align-middle"><i class="fa-solid fa-van-shuttle fa-xl"></i></td>
-          <td class="align-middle">捷運</td>
-          <td class="align-middle">＄120</td>
+          <td class="align-middle">{{{this.categoryId.categoryIcon}}}</td>
+          <td class="align-middle">{{this.name}}</td>
+          <td class="align-middle">{{this.amount}}</td>
           <td class="d-flex justify-content-end"><a href="" class="btn btn-success btn-sm mx-2">修改</a><a href=""
               class="btn btn-success btn-sm">刪除</a></td>
         </tr>
-        {{!-- {{/each}} --}}
+        {{/each}}
       </tbody>
     </table>
     <div class="d-grid gap-2">
