@@ -10,18 +10,21 @@ let recordData = [
   {
     name: '晚餐',
     category: '餐飲食品',
-    amount: '1500'
+    amount: '1500',
+    date:'2022-02-06'
 
   },
   {
     name: '看電影',
     category: '休閒娛樂',
-    amount: '600'
+    amount: '600',
+    date: '2022-03-06'
   },
   {
     name: '搭計程車',
     category: '交通出行',
-    amount: '600'
+    amount: '600',
+    date: '2022-03-06'
   }
 ]
 db.once('open', () => {
@@ -37,6 +40,7 @@ db.once('open', () => {
             return Record.create({
               name: data.name,
               amount: data.amount,
+              date: data.date,
               userId,
               categoryId: category._id
             })

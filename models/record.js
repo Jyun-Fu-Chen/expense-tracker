@@ -6,9 +6,9 @@ const recordSchema = new Schema({
     type: String,
     required: true
   },
-  Date: {
-    type: Date,
-    default: Date.now
+  date: {
+    type: String,
+    required: true
   },
   amount: {
     type: String,
