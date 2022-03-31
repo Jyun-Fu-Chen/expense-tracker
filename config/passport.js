@@ -6,14 +6,14 @@ module.exports = app => {
   app.use(passport.initialize())
   app.use(passport.session())
 
-  passport.use(new LocalStrategy((username, password, done) => {
+  passport.use(new LocalStrategy({ passReqToCallback: true }, (req, username, password, done) => {
     User.findOne({ username })
       .then(user => {
         if (!user) {
-          return done(null, false, { message: 'This user is not registered!' })
+          return done(null, false, req.flash('warning_msg', 'This user is not registered!'))
         }
         if (user.password !== password) {
-          return done(null, false, { message: 'User or Password incorrect' })
+          return done(null, false, req.flash('warning_msg', 'User or Password incorrect'))
         }
         return done(null, user)
       })

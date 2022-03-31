@@ -18,7 +18,8 @@ router.post('/login', passport.authenticate('local', {
 router.post('/register', (req, res) => {
   const { username, password, confirmPassword } = req.body
   if (password !== confirmPassword) {
-    return console.log('密碼長度不一致')
+    req.flash('warning_msg', '確認密碼與密碼不一致')
+    return res.render('register', { username, password })
   }
   User.findOne({ username })
     .then(user => {
