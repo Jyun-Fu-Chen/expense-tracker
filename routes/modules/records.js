@@ -3,8 +3,6 @@ const router = express.Router()
 
 const Record = require('../../models/record')
 const Category = require('../../models/category')
-const { redirect } = require('express/lib/response')
-const record = require('../../models/record')
 
 router.get('/new', (req, res) => {
   res.render('new')

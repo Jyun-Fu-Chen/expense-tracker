@@ -17,23 +17,27 @@ router.get('/', (req, res) => {
     })
 })
 router.post('/category', (req, res) => {
-  const category = req.body.category
+  const reqCategory = req.body.category
   const userId = req.user._id
-  if(category === '全部'){
-    return res.redirect('/')
-  }
-  Category.findOne({ name: category })
+  Category.find()
+    .lean()
     .then(category => {
-      console.log(category)
-      const categoryId = category._id
-      Record.find({ userId, categoryId })
-      .populate('categoryId')
+      const recordCategory = []
+      const otherCategory = []
+      category.map(category => {
+        if (category.name === reqCategory) {
+          return recordCategory.push(category)
+        } else {
+          return otherCategory.push(category)
+        }
+      })
+      Record.find({ userId, categoryId: recordCategory[0]._id })
+        .populate('categoryId')
         .lean()
         .then(records => {
-          console.log(records)
           let totalAmount = 0
           records.map(record => totalAmount += Number(record.amount))
-          res.render('home', { records, totalAmount })
+          res.render('home', { records, totalAmount, recordCategory: recordCategory[0], otherCategory })
         })
     })
 })
