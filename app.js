@@ -3,6 +3,10 @@ const exhbs = require('express-handlebars')
 const bodyParser = require('body-parser')
 const session = require('express-session')
 const methodOverride = require('method-override')
+if (process.env.NODE_ENV !== 'production') {
+  require('dotenv').config()
+}
+
 const flash = require('connect-flash')
 const routes = require('./routes')
 
@@ -11,13 +15,13 @@ require('./config/mongoose')
 
 
 const app = express()
-const port = 3000
+const port = process.env.PORT
 
 app.engine('.hbs', exhbs.engine({ extname: '.hbs' }))
 app.set('view engine', '.hbs')
 
 app.use(session({
-  secret: 'ThisIsExpenseTracker',
+  secret: process.env.SESSION_SECRET,
   resave: false,
   saveUninitialized: true
 }))

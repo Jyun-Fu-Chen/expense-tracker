@@ -5,17 +5,17 @@
       {{>message}}
       <form action="/users/register" method="POST">
         <div class="form-group mb-3">
-          <label for="username">Name</label>
+          <label for="username">Name<span class="text-danger">*</span></label>
           <input type="text" id="username" name="username" class="form-control" placeholder="Enter Name"
             value="{{username}}" required>
         </div>
         <div class="form-group mb-3">
-          <label for="password">Password</label>
+          <label for="password">Password<span class="text-danger">*</span></label>
           <input type="password" id="password" name="password" class="form-control" placeholder="Enter Password"
             value="{{password}}" required>
         </div>
         <div class="form-group mb-3">
-          <label for="confirmPassword">Confirm Password</label>
+          <label for="confirmPassword">Confirm Password<span class="text-danger">*</span></label>
           <input type="password" id="confirmPassword" name="confirmPassword" class="form-control"
             placeholder="Confirm Password" value="{{confirmPassword}}" required>
         </div>
