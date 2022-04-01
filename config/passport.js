@@ -15,8 +15,9 @@ module.exports = app => {
   }, (accessToken, refreshToken, profile, done) => {
     const name = profile._json.name
     User.findOne({ name })
+      .lean()
       .then(user => {
-        if (user) return done(null, user)
+        if (user.username === name) return done(null, user)
         const randomPassword = Math.random().toString(36).slice(-5)
         return User.create({
           username: name,
